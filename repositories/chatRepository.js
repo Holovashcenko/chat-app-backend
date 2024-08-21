@@ -17,6 +17,12 @@ class ChatRepository {
   async deleteChat(id) {
     return await Chat.findByIdAndDelete(id)
   }
+
+  async searchChats(query) {
+    return Chat.find({
+      $or: [{ firstName: { $regex: query, $options: 'i' } }, { lastName: { $regex: query, $options: 'i' } }],
+    })
+  }
 }
 
 module.exports = new ChatRepository()

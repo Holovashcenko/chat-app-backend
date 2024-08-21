@@ -57,6 +57,17 @@ class ChatController {
       res.status(500).json({ error: DELETE_CHAT_FAILED })
     }
   }
+
+  async searchChats(req, res, next) {
+    const { query } = req.query
+
+    try {
+      const chats = await chatService.searchChats(query)
+      res.status(200).json(chats)
+    } catch (error) {
+      res.status(500).json({ error: FETCH_CHATS_FAILED })
+    }
+  }
 }
 
 module.exports = new ChatController()

@@ -16,6 +16,10 @@ class ChatService {
   async deleteChat(id) {
     return await chatRepository.deleteChat(id)
   }
+
+  async searchChats(query) {
+    return chatRepository.searchChats(query)
+  }
 }
 
 module.exports = new ChatService()

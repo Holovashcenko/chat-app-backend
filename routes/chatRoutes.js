@@ -11,4 +11,6 @@ router.put('/:id', validateChatUpdate, chatController.updateChat)
 
 router.delete('/:id', chatController.deleteChat)
 
+router.get('/search', chatController.searchChats)
+
 module.exports = router
