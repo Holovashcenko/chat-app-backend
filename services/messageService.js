@@ -14,9 +14,8 @@ class MessageService {
       content: quote,
       owner: 'user',
     }
-    await messageRepository.createMessage(autoResponseMessage)
 
-    setTimeout(sendAutoResponse, 3000)
+    await messageRepository.createMessage(autoResponseMessage)
 
     return userMessage
   }

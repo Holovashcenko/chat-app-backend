@@ -58,7 +58,7 @@ class ChatController {
     }
   }
 
-  async searchChats(req, res, next) {
+  async searchChats(req, res) {
     const { query } = req.query
 
     try {
