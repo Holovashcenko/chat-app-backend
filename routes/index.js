@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const chatController = require('../controllers/chatController')
 
-router.get('/chats', chatController.getChats)
+const chatRoutes = require('./chatRoutes')
+
+router.use('/chats', chatRoutes)
 
 module.exports = router
