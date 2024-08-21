@@ -7,4 +7,6 @@ module.exports = {
   REQUIRED_FIELDS: 'First name and last name are required',
   UPDATE_FIELDS_REQUIRED: 'At least one of first name or last name is required',
   UNEXPECTED_ERROR: 'An unexpected error occurred',
+  CREATE_MESSAGE_FAILED: 'Failed to create message',
+  FETCH_MESSAGES_FAILED: 'Failed to fetch messages',
 }
