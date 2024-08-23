@@ -13,6 +13,7 @@ class MessageController {
       const newMessage = await messageService.createMessage({ chatId, content })
       res.status(201).json(newMessage)
     } catch (error) {
+      console.error('Error creating message:', error)
       res.status(500).json({ error: CREATE_MESSAGE_FAILED })
     }
   }
@@ -22,9 +23,7 @@ class MessageController {
 
     try {
       const messages = await messageService.getMessages(chatId)
-      if (!messages || messages.length === 0) {
-        return res.status(404).json({ error: MESSAGE_NOT_FOUND })
-      }
+
       res.status(200).json(messages)
     } catch (error) {
       res.status(500).json({ error: FETCH_MESSAGES_FAILED })
