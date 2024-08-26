@@ -4,7 +4,7 @@ const cors = require('cors')
 require('dotenv').config()
 
 const connectDB = require('../config/db')
-const routes = require('../routes')
+const routes = require('./routes')
 const initializeChats = require('../config/initChats')
 const sendRandomMessage = require('../config/randomMessageSender')
 const { initSocket } = require('../config/socket')
