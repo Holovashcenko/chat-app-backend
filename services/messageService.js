@@ -29,6 +29,10 @@ class MessageService {
   async getMessages(chatId) {
     return messageRepository.getMessagesByChatId(chatId)
   }
+
+  async deleteMessage(messageId) {
+    return await messageRepository.deleteMessage(messageId)
+  }
 }
 
 module.exports = new MessageService()

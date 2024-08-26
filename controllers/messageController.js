@@ -1,5 +1,5 @@
 const messageService = require('../services/messageService')
-const { CREATE_MESSAGE_FAILED, FETCH_MESSAGES_FAILED } = require('../constants/errorMessages')
+const { CREATE_MESSAGE_FAILED, FETCH_MESSAGES_FAILED, DELETE_MESSAGE_FAILED } = require('../constants/errorMessages')
 const { getSocket } = require('../config/socket')
 const { setAutoMessageStatus } = require('../config/autoMessageStatus')
 
@@ -58,6 +58,26 @@ class MessageController {
     } catch (error) {
       console.error('Error updating auto message status:', error)
       res.status(500).json({ error: 'Failed to update auto message status' })
+    }
+  }
+
+  async deleteMessage(req, res) {
+    const { messageId } = req.params
+
+    try {
+      const message = await messageService.deleteMessage(messageId)
+
+      const io = getSocket()
+      if (io) {
+        io.emit('messageDeleted', messageId)
+      } else {
+        console.error('Socket.IO instance is not initialized')
+      }
+
+      res.status(200).json({ message: 'Message deleted successfully' })
+    } catch (error) {
+      console.error('Error deleting message:', error)
+      res.status(500).json({ error: DELETE_MESSAGE_FAILED })
     }
   }
 }

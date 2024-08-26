@@ -24,6 +24,22 @@ class MessageRepository {
       chatName: `${message.chatId.firstName} ${message.chatId.lastName}`,
     }))
   }
+
+  async deleteMessage(messageId) {
+    const message = await Message.findById(messageId)
+
+    if (!message) {
+      throw new Error('Message not found')
+    }
+
+    await Chat.findByIdAndUpdate(message.chatId, {
+      $pull: { messages: messageId },
+    })
+
+    await Message.findByIdAndDelete(messageId)
+
+    return message
+  }
 }
 
 module.exports = new MessageRepository()

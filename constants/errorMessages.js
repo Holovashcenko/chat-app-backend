@@ -10,4 +10,5 @@ module.exports = {
   CREATE_MESSAGE_FAILED: 'Failed to create message',
   FETCH_MESSAGES_FAILED: 'Failed to fetch messages',
   CREATE_MESSAGE_FIELDS_REQUIRED: 'Chat ID and content are required',
+  DELETE_MESSAGE_FAILED: 'Failed to delete message',
 }

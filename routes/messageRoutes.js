@@ -8,4 +8,6 @@ router.get('/:chatId', messageController.getMessages)
 
 router.post('/auto-message/toggle', messageController.updateAutoMessageStatus)
 
+router.delete('/:messageId', messageController.deleteMessage)
+
 module.exports = router
