@@ -8,6 +8,10 @@
       "headers": {
         "Access-Control-Allow-Origin": "*"
       }
+    },
+    {
+      "src": "/socket.io/(.*)",
+      "dest": "/api/index.js"
     }
   ]
 }
